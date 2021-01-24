@@ -3,23 +3,25 @@
 
 ### Example
 ```rust
-use text_block::{TextBlock, Pt, Mm, Align};
+use text_block::{TextBlockBuilder, Pt, Mm, Left, TitleCase};
 
-let text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-let text_block = TextBlock::build()
-    .text(text)
-    .face("../fonts/font.ttf")
-    .size(Pt(12))
-    .width(Mm(35.))
-    .hyphenate()
-    .align(Align::Left);
-
-assert_eq!(&text_block.next(), String::from("Lorem ipsum"));
-assert_eq!(&text_block.next(), String::from("dolor sit amet,")); 
-assert_eq!(&text_block.next(), String::from("consectetur"));
-assert_eq!(&text_block.next(), String::from("adipiscing elit, sed")); 
-assert_eq!(&text_block.next(), String::from("do eiusmod"));
-assert_eq!(&text_block.next(), String::from("tempor incididunt"));
-assert_eq!(&text_block.next(), String::from("ut labore et dolore"));
-assert_eq!(&text_block.next(), String::from("magna aliqua."));
+fn main() {
+    let face = Face::from_path("../fonts/font.ttf");
+    let black = Color::Cmyk::new(0., 0., 0., 1.);
+    let start = Position::new(10., 10.);
+    let text_block = TextBlockBuilder::new()
+        .font(face)
+        .text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+        .size(Pt(12.))
+        .position(start)
+        .width(Mm(35.))
+        .hyphenate()
+        .transform(TitleCase)
+        .spacing(Pt(1.2))
+        .color(black)
+        .align(Left)
+        .finish();
+    assert_eq!(&text_block.next().text(), String::from("Lorem ipsum"));
+    assert_eq!(&text_block.next().position(), Position::new(10., 15.));
+}
 ```
