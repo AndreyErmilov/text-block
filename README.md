@@ -1,5 +1,7 @@
 # text-block
-*The project is currently under development and is not ready for use in production.*
+![build](https://github.com/AndreyErmilov/text-block/workflows/CI/badge.svg)
+
+*The project is currently under development and is not ready for use.*
 
 ### Example
 ```rust
@@ -21,7 +23,7 @@ fn main() {
         .color(black)
         .align(Left)
         .finish();
-    assert_eq!(&text_block.next().text(), String::from("Lorem ipsum"));
+    assert_eq!(&text_block.next().text(), String::from("Lorem Ipsum"));
     assert_eq!(&text_block.next().position(), Position::new(10., 15.));
 }
 ```
