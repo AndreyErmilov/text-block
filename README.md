@@ -1,7 +1,14 @@
 # text-block
+TextBlock is a tool for calculating positions for all elements in text block (paragraph) 
+with specific settings like font face, tracking / leading etc.
+
 ![build](https://github.com/AndreyErmilov/text-block/workflows/CI/badge.svg)
 
 *The project is currently under development and is not ready for use.*
+
+## Features
+* Supports tracking / leading
+* Uses not only Mm (points etc.)
 
 ### Example
 ```rust
