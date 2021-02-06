@@ -1,7 +1,12 @@
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
-    }
-}
+mod block;
+mod color;
+mod face;
+mod size;
+mod styles;
+mod transform;
+
+pub use color::Color;
+pub use face::Face;
+pub use size::Size;
+pub use styles::{CharacterStyle, ParagraphStyle};
+pub use transform::TextTransformation;

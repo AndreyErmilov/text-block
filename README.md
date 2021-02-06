@@ -5,12 +5,12 @@
 
 ### Example
 ```rust
-use text_block::{TextBlockBuilder, Pt, Mm, Left, TitleCase};
+use text_block::{TextBlock, CharacterStyle, ParagraphStyle, Pt, Mm, Left, TitleCase};
 
 fn main() {
     let face = Face::from_path("../fonts/font.ttf");
     let black = Color::Cmyk::new(0., 0., 0., 1.);
-    let character_style = CharacterStyleBuilder::new()
+    let character_style = CharacterStyle::build()
         .font(face)
         .size(Pt(12.))
         .tracking(Em(10))
@@ -19,7 +19,7 @@ fn main() {
         .color(black)
         .finish();
     
-    let paragraph_style = ParagraphStyleBuilder::new()
+    let paragraph_style = ParagraphStyle::build()
         .style(character_style)
         .align(Left)
         .first_line_indent(Pt(10.))
@@ -28,7 +28,7 @@ fn main() {
         .finish();
     
     let start = Position::new(10., 10.);
-    let text_block = TextBlockBuilder::new()
+    let text_block = TextBlock::build()
         .style(paragraph_style)
         .text("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
         .position(start)
